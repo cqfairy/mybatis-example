@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/cache/cache.iml" filepath="$PROJECT_DIR$/cache/cache.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../common/common.iml" filepath="$PROJECT_DIR$/../common/common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../common/entity/entity.iml" filepath="$PROJECT_DIR$/../common/entity/entity.iml" />
+      <module fileurl="file://$PROJECT_DIR$/enum/enum.iml" filepath="$PROJECT_DIR$/enum/enum.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mybatis-example.iml" filepath="$PROJECT_DIR$/mybatis-example.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mybatis-transaction/mybatis-transaction.iml" filepath="$PROJECT_DIR$/mybatis-transaction/mybatis-transaction.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../common/util/util.iml" filepath="$PROJECT_DIR$/../common/util/util.iml" />
+    </modules>
+  </component>
+</project>

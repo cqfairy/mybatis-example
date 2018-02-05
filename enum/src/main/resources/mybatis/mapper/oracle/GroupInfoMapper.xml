@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xx.mybatis.example.enums.dao.oracle.GroupInfoMapper">
+    <resultMap id="BaseResultMap" type="com.xx.common.entity.GroupInfo">
+        <result column="ID" property="id" jdbcType="DECIMAL"/>
+        <result column="NAME" property="name" jdbcType="VARCHAR"/>
+        <result column="STATUS" property="status" jdbcType="DECIMAL"/>
+        <result column="P_ID" property="pId" jdbcType="DECIMAL"/>
+        <result column="TYPE" property="type" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <resultMap id="DetailResultMap" type="com.xx.common.dto.GroupDto">
+        <result column="ID" property="id" jdbcType="DECIMAL"/>
+        <result column="NAME" property="name" jdbcType="VARCHAR"/>
+        <result column="STATUS" property="status" jdbcType="DECIMAL"/>
+        <result column="P_ID" property="pId" jdbcType="DECIMAL"/>
+        <result column="TYPE" property="type" jdbcType="VARCHAR"/>
+        <association columnPrefix="AS_" property="parentGroup" resultMap="BaseResultMap"></association>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+    id, name, status,pId,type
+  </sql>
+    <insert id="insert" parameterType="com.xx.common.entity.GroupInfo">
+    insert into GROUP_INFO (ID, NAME, STATUS,P_ID,TYPE)
+    values (XX.SEQ_SYS_USER_ID.NEXTVAL, #{name,jdbcType=VARCHAR}, #{status,jdbcType=DECIMAL}
+    , #{pId,jdbcType=DECIMAL}, #{type,jdbcType=VARCHAR})
+  </insert>
+
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+        select
+        <include refid="Base_Column_List"/>
+        from GROUP_INFO
+        where id = #{id,jdbcType=INTEGER}
+    </select>
+
+    <select id="selectById" resultMap="BaseResultMap">
+    SELECT * FROM GROUP_INFO WHERE ID = #{ID}
+  </select>
+
+    <select id="selectDetailById" resultMap="DetailResultMap">
+    SELECT INFO.ID,INFO.NAME,INFO.STATUS,INFO.P_ID,INFO.TYPE,
+      P_INFO.ID AS AS_ID,P_INFO.NAME AS AS_NAME,P_INFO.STATUS AS AS_STATUS,
+      P_INFO.P_ID AS AS_P_ID,P_INFO.TYPE AS AS_TYPE
+      FROM GROUP_INFO INFO,GROUP_INFO P_INFO WHERE INFO.P_ID = P_INFO.ID AND INFO.ID = #{id}
+  </select>
+
+
+</mapper>
